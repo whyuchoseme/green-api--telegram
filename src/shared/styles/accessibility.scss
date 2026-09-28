@@ -1,0 +1,38 @@
+/* 1. ВИЗУАЛЬНОЕ СКРЫТИЕ ДЛЯ СКРИНРИДЕРОВ
+   Прячет элемент с экрана так, чтобы он не ломал верстку, 
+   НО оставляет его доступным для голосовых читалок (VoiceOver, NVDA).
+   
+   КОГДА ИСПОЛЬЗОВАТЬ ЭТОТ МИКСИН:
+   - Для скрытых заголовков секций (SEO + структура для незрячих).
+     Пример: <h2 class="visually-hidden">Наши партнеры</h2>
+   - Для сложного HTML, который нужно спрятать (скрытые списки, таблицы).
+   - Если критически важно, чтобы этот текст перевел Google Translate.
+   
+   КОГДА ХВАТИТ ПРОСТОГО HTML-АТРИБУТА `aria-label="..."`:
+   - На мелком интерактиве: кнопках с иконками, крестиках закрытия модалки, чекбоксах.
+     Пример: <button aria-label="Закрыть меню">X</button>
+*/
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+/* 2. КАСТОМНЫЙ ФОКУС ПРИ НАВИГАЦИИ С КЛАВИАТУРЫ (TAB)
+   Применяется к псевдоклассу :focus-visible. 
+   Рисует красивую прерывистую рамку с отступом, показывая зрячим пользователям 
+   с клавиатурой, где они находятся. Анимация отключается (!important), 
+   потому что по стандартам доступности фокус должен прыгать моментально.
+*/
+@mixin focus-visible {
+  outline: 2px dashed #fff;
+  outline-offset: 4px;
+  transition-duration: 0s !important;
+}

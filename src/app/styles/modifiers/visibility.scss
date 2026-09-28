@@ -1,0 +1,55 @@
+@use "@shared/styles/" as *;
+
+/* ==========================================================================
+   КЛАССЫ ВИДИМОСТИ (Desktop-First)
+   Так как верстка идет от десктопа к мобилкам, элементы видимы по умолчанию.
+   Для классов .visible-* мы просто скрываем их на экранах, которые БОЛЬШЕ нужного.
+   ========================================================================== */
+
+/* --- 1. MOBILE (До 767px) --- */
+
+// Скрываем блок на мобилках (исчезнет, если экран меньше 768px)
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+// Показываем блок ТОЛЬКО на мобилках (скрываем на 768px и выше)
+.visible-mobile {
+  @media (min-width: #{$tablet}px) {
+    display: none !important;
+  }
+}
+
+/* --- 2. TABLET (До 1023px) --- */
+
+// Скрываем блок на планшетах и ниже (исчезнет, если экран меньше 1024px)
+.hidden-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+// Показываем блок ТОЛЬКО на планшетах и ниже (скрываем на 1024px и выше)
+.visible-tablet {
+  @media (min-width: #{$laptop}px) {
+    display: none !important;
+  }
+}
+
+/* --- 3. LAPTOP (До 1439px) --- */
+
+// Скрываем блок на ноутбуках и ниже (исчезнет, если экран меньше 1440px)
+.hidden-laptop {
+  @include laptop {
+    display: none !important;
+  }
+}
+
+// Показываем блок ТОЛЬКО на ноутбуках и ниже (скрываем на 1440px и выше)
+.visible-laptop {
+  @media (min-width: #{$desktop}px) {
+    display: none !important;
+  }
+}

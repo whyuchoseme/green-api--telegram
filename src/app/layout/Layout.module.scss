@@ -1,0 +1,36 @@
+.layout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(
+      28deg,
+      var(--color-linear-gradient-primary) 8.03%,
+      var(--color-linear-gradient-secondary) 91.51%
+    );
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image: url("@shared/assets/main-bcg.svg");
+    opacity: 0.15;
+    pointer-events: none;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}

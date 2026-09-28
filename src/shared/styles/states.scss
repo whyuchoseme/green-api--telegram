@@ -1,0 +1,13 @@
+/* 1. ПЛАВНОЕ СКРЫТИЕ И ПОЯВЛЕНИЕ (АЛЬТЕРНАТИВА DISPLAY: NONE)
+   Используется для элементов, которые должны появляться и исчезать с анимацией (модалки, дропдауны, тултипы). 
+   display: none анимировать нельзя, а связку opacity + visibility — можно (через transition).
+*/
+@mixin hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@mixin show {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,50 @@
+.button {
+  @include flex-center;
+  padding: fluid(6, 3) fluid(14, 12);
+  border: none;
+  border-radius: rem(8);
+  color: var(--color-text-button-primary);
+  font-weight: 600;
+  transition-property: background-color;
+
+  &--primary {
+    background-color: var(--color-bg-button-primary);
+
+    @include hover {
+      background-color: var(--color-bg-button-primary-hover);
+    }
+
+    &:disabled {
+      background-color: var(--color-bg-button-disabled);
+    }
+  }
+
+  &--secondary {
+    border-radius: rem(24);
+    background-color: var(--color-bg-button-primary);
+
+    @include hover {
+      background-color: var(--color-bg-button-primary-hover);
+    }
+  }
+
+  &--accent {
+    width: rem(40);
+    height: rem(40);
+    padding-inline: rem(15);
+    background-color: var(--color-bg-button-accent);
+
+    @include hover {
+      background-color: var(--color-bg-button-accent-hover);
+    }
+  }
+
+  &--danger {
+    color: var(--color-text-button-danger);
+    background: none;
+
+    @include hover {
+      background-color: var(--color-bg-button-danger-hover);
+    }
+  }
+}

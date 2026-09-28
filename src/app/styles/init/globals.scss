@@ -1,0 +1,49 @@
+@use "@shared/styles" as *;
+@use "../tokens/theme.scss" as *;
+
+html {
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  position: relative;
+  font-weight: 400;
+  font-size: rem($base-font-size);
+  line-height: normal;
+  color: var(--color-text-primary);
+}
+
+/* =========================================
+   Утилиты
+   ========================================= */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+}
+
+h1,
+h2 {
+  font-weight: 600;
+}
+
+h1 {
+  @include fluid-text(56, 32);
+}
+
+h2 {
+  @include fluid-text(24, 20);
+}

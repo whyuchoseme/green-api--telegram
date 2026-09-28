@@ -1,0 +1,7 @@
+@use "@shared/styles" as *;
+
+// Прячет элемент с экрана так, чтобы он не ломал верстку,
+// НО оставляет его доступным для голосовых читалок (VoiceOver, NVDA).
+.visually-hidden {
+  @include visually-hidden;
+}

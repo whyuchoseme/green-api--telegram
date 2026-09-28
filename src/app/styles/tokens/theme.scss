@@ -1,0 +1,101 @@
+:root {
+  /* =======================================
+     1. БАЗОВАЯ ПАЛИТРА (Примитивы)
+     ======================================= */
+
+  /* Черный */
+  --palette-black: #000000;
+  --palette-black-a10: #0000001a;
+
+  /* Белый */
+  --palette-white: #ffffff;
+
+  /* Серый */
+  --palette-gray-50: #f4f4f5;
+  --palette-gray-100: #f0f2f5;
+  --palette-gray-200: #e0e0e0;
+  --palette-gray-300: #dbdbdb;
+  --palette-gray-500: #999999;
+
+  /* Синий */
+  --palette-blue-200: #a6cbf0;
+  --palette-blue-300: #80bcff;
+  --palette-blue-500: #3390ec;
+  --palette-blue-500-a20: #3390ec33;
+  --palette-blue-600: #2a7ac8;
+
+  /* Красный */
+  --palette-red-50: #fee3e2;
+  --palette-red-200: #e53935;
+  --palette-red-500: #ff0000;
+
+  /* Зеленый */
+  --palette-green-100: #e3ffc8;
+  --palette-green-500: #008000;
+
+  /* Ниагара */
+  --palette-niagara-200: #99d5d7;
+  --palette-niagara-400: #00a884;
+  --palette-niagara-500: #038b6e;
+
+  --transition-duration: 0.2s;
+  --transition-timing-function: linear;
+
+  /* =======================================
+     2. СЕМАНТИКА
+     ======================================= */
+
+  /* Глобальные (Текст) */
+  --color-text-primary: var(--palette-black);
+  --color-text-secondary: var(--palette-white);
+  --color-text-danger: var(--palette-red-500);
+  --color-text-brand-primary: var(--palette-green-500);
+
+  /* Глобальные (Фон) */
+  --color-bg-primary: var(--palette-white);
+
+  /* КНОПКИ */
+  // Состояние Активное (not-Disabled)
+  --color-border-button-primary: var(--palette-black);
+  --color-text-button-primary: var(--palette-white);
+  --color-text-button-danger: var(--palette-red-200);
+
+  --color-bg-button-primary: var(--palette-blue-500);
+  --color-bg-button-primary-hover: var(--palette-blue-600);
+  --color-bg-button-secondary: var(--palette-blue-600);
+  --color-bg-button-accent: var(--palette-niagara-400);
+  --color-bg-button-accent-hover: var(--palette-niagara-500);
+  --color-bg-button-danger-hover: var(--palette-red-50);
+
+  // Состояние Заблокировано (Disabled)
+  --color-text-button-disabled: var(--palette-gray-300);
+  --color-bg-button-primary-disabled: var(--palette-blue-200);
+
+  /* СПИННЕР */
+  --color-border-spinner-primary: var(--palette-blue-500-a20);
+  --color-border-top-spinner-primary: var(--palette-blue-500);
+
+  /* ИНПУТ */
+  --color-border-input-primary: var(--palette-gray-300);
+  --color-border-input-accent: var(--palette-blue-500);
+
+  /* BOX-SHADOW */
+  --color-box-shadow-primary: var(--palette-black-a10);
+
+  /* linear-gradient */
+  --color-linear-gradient-primary: var(--palette-niagara-200);
+  --color-linear-gradient-secondary: var(--palette-blue-300);
+
+  /* SIDEBAR */
+  --color-border-sidebar: var(--palette-gray-200);
+
+  /* CHAT-ITEM */
+  --color-bg-chat-item-primary: var(--palette-gray-50);
+
+  /* AVATAR */
+  --color-bg-avatar-primary: var(--palette-blue-500);
+
+  /* MESSAGE */
+  --color-bg-message--outgoing: var(--palette-green-100);
+  --color-bg-message--incoming: var(--palette-white);
+}

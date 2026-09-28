@@ -1,0 +1,19 @@
+.sidebar {
+  width: fluid(480, 230);
+  display: flex;
+  flex-direction: column;
+  border-radius: rem(24);
+  padding: rem(8);
+  background-color: var(--color-bg-primary);
+
+  &__header {
+    @include flex-col-center;
+    padding-inline: rem(10);
+    border-bottom: 1px solid var(--color-border-sidebar);
+  }
+
+  &__chats-list {
+    padding-top: rem(10);
+    overflow-y: auto;
+  }
+}

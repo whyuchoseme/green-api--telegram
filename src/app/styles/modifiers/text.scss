@@ -1,0 +1,5 @@
+// Помогает принудительно разорвать строку, не ломая верстку
+.line-break {
+  width: max-content;
+  display: block;
+}

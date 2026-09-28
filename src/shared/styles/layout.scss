@@ -1,0 +1,123 @@
+/* 1. ИДЕАЛЬНОЕ ЦЕНТРОВАНИЕ (FLEX)
+   Универсальная таблетка, чтобы выровнять контент ровно по центру блока (и по X, и по Y).
+   - По умолчанию делает блок display: flex.
+   - Если передать true: @include flex-center(true); — сделает inline-flex.
+*/
+@mixin flex-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: center;
+  align-items: center;
+}
+
+/* 1.1. Тоже самое, но теперь flex-direction: column.
+*/
+
+@mixin flex-col-center($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 1.2. Быстрый миксин для создания навигации, как в шапке, с расталкиванием элементов.
+*/
+
+@mixin flex-between($isInline: false) {
+  @if $isInline {
+    display: inline-flex;
+  } @else {
+    display: flex;
+  }
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 2. ПОЛНОЕ АБСОЛЮТНОЕ ПЕРЕКРЫТИЕ
+   Растягивает элемент на всю ширину и высоту родителя (у родителя должен быть position: relative).
+   Использует современное свойство inset: 0 (заменяет top: 0, right: 0, bottom: 0, left: 0).
+   Идеально для оверлеев модальных окон, фоновых затемнений или скелетонов загрузки.
+*/
+@mixin abs-cover {
+  position: absolute;
+  inset: 0;
+}
+
+/* 3. АБСОЛЮТНОЕ ЦЕНТРОВАНИЕ
+   Классический трюк для позиционирования элемента по центру родителя 
+   (у родителя должен быть position: relative).
+   Использует современное свойство translate вместо transform.
+   Отлично подходит для центрирования иконок поверх картинок, лоадеров и модалок.
+*/
+@mixin abs-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+/* 3.1. АБСОЛЮТНОЕ ЦЕНТРОВАНИЕ ТОЛЬКО ПО ГОРИЗОНТАЛИ (Ось X)
+   Прижимает элемент ровно по центру ширины родителя.
+*/
+@mixin abs-x {
+  position: absolute;
+  left: 50%;
+  translate: -50%;
+}
+
+/* 3.2. АБСОЛЮТНОЕ ЦЕНТРОВАНИЕ ТОЛЬКО ПО ВЕРТИКАЛИ (Ось Y)
+   Прижимает элемент ровно по центру высоты родителя.
+*/
+@mixin abs-y {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+}
+
+/* 4. ИДЕАЛЬНЫЙ КВАДРАТ (Безопасный вариант)
+   Задает строгие размеры ширины и высоты.
+   Свойство flex-shrink: 0 гарантирует, что если этот квадрат 
+   окажется внутри тесного flex-контейнера, он НЕ сплющится.
+   Незаменимо для аватарок, иконок и кнопок.
+*/
+@mixin square($size) {
+  width: $size;
+  height: $size;
+  flex-shrink: 0; /* Защита от деформации во flex-контейнерах */
+}
+
+/* 5. ЛИНИЯ НА ВСЮ ШИРИНУ ЭКРАНА (ВЫХОД ЗА КОНТЕЙНЕР)
+   Рисует декоративную линию, которая растягивается от края до края браузера, 
+   даже если сам элемент находится внутри узкого центрированного контейнера.
+   Полезно для визуального разделения секций.
+*/
+@mixin full-vw-centered-line(
+  $property: top,
+  $left: 50%,
+  $right: auto,
+  $translate: -50%
+) {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: $left;
+    right: $right;
+    #{$property}: 0;
+    translate: $translate;
+    width: 100vw;
+    height: 1px;
+    background-color: currentColor; /* Цвет наследуется от текста родителя */
+  }
+}

@@ -1,0 +1,27 @@
+.chat-item {
+  width: 100%;
+  height: rem(70);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: rem(15);
+  border: none;
+  outline: none;
+  border-radius: rem(16);
+  font-weight: 600;
+  color: inherit;
+  background-color: var(--color-bg-primary);
+  transition: background-color var(--transition-duration);
+
+  &:not(.chat-item--active) {
+    @include hover {
+      background-color: var(--color-bg-chat-item-primary);
+    }
+  }
+
+  &--active {
+    background-color: var(--color-bg-button-primary);
+    color: var(--color-text-button-primary);
+  }
+}

@@ -1,0 +1,48 @@
+.authorization-form {
+  width: fluid(400, 260);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: rem(15);
+  padding-block: fluid(40, 30);
+  padding-inline: fluid(30, 20);
+  background-color: var(--color-bg-primary);
+  border-radius: rem(28);
+  box-shadow: 0 4px 12px var(--color-box-shadow-primary);
+
+  &__title {
+    color: var(--color-text-brand-primary);
+    margin-bottom: rem(10);
+    text-align: center;
+  }
+
+  &__id,
+  &__token {
+    padding-block: fluid(12, 8);
+    padding-inline: fluid(16, 12);
+    border: 1px solid var(--color-border-input-primary);
+    border-radius: rem(8);
+    outline: none;
+    transition: border-color var(--transition-duration)
+      var(--transition-timing-function);
+
+    &:focus {
+      border-color: var(--color-border-input-accent);
+    }
+  }
+
+  &__error {
+    text-align: center;
+    @include fluid-text(14, 12);
+    color: var(--color-text-danger);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: rem(5);
+  }
+}

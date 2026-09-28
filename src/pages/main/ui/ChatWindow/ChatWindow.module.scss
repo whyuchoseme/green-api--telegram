@@ -1,0 +1,45 @@
+.chat-window {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-inline: fluid(76, 16);
+
+  &__header {
+    height: rem(48);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding-inline: rem(6);
+    border-radius: rem(24);
+    background-color: var(--color-bg-primary);
+  }
+
+  &__person-avatar {
+    width: rem(40);
+    height: rem(40);
+    @include flex-center;
+    margin-right: rem(12);
+    border-radius: 50%;
+    background-color: var(--color-bg-avatar-primary);
+    color: white;
+    font-weight: bold;
+  }
+
+  &__person-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__person-name {
+    font-weight: 600;
+  }
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: rem(4);
+  padding-block: rem(20);
+  overflow-y: auto;
+}
