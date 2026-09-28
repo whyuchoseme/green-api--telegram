@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/green-api--telegram/",
   resolve: {
     alias: {
       "@app": path.resolve(__dirname, "src/app/"),
