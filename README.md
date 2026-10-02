@@ -1,75 +1,38 @@
-# React + TypeScript + Vite
+# Telegram Web Client (GREEN-API)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Легкий веб-клиент мессенджера, созданный с использованием React и GREEN-API. Проект спроектирован со строгим соблюдением методологии **Feature-Sliced Design (FSD)**, что обеспечивает высокую масштабируемость, переиспользуемость компонентов и чистую архитектуру.
 
-Currently, two official plugins are available:
+## 🛠 Технологический стек
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend:** React 19, TypeScript, Vite
+- **Стилизация:** SCSS Modules (с использованием гибких миксинов и адаптивной верстки)
+- **Архитектура:** Feature-Sliced Design (FSD)
+- **API:** GREEN-API (интеграция с WhatsApp/Telegram)
 
-## React Compiler
+## 🏗 Архитектура (FSD)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Проект разделен на изолированные слои по правилам FSD:
+- `app/` — Инициализация приложения, глобальные стили, провайдеры.
+- `pages/` — Экраны приложения (например, главная страница чата).
+- `features/` — Пользовательские сценарии (например, `SendMessageForm`, `CreateChatForm`).
+- `entities/` — Бизнес-сущности (например, `MessageBubble`, `ChatItem`).
+- `shared/` — Переиспользуемый код (UI-кит, API-клиенты, утилиты).
 
-## Expanding the ESLint configuration
+## 🚀 Локальный запуск проекта
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+### 1. Клонирование репозитория
+```bash
+git clone https://github.com/whyuchoseme/green-api--telegram
 ```
-
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+### 2. Установка зависимостей
+```bash
+npm i
+```
+### 3. Запуск сервера для разработки
+```bash
+npm run dev
+```
+## 🌍 Также можно пощупать проект по адресу:
+```bash
+https://whyuchoseme.github.io/green-api--telegram/
 ```
