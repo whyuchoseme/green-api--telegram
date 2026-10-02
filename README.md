@@ -39,8 +39,18 @@ npm i
 npm run dev
 ```
 
-## 🌍 Также можно пощупать проект по адресу:
+### 4. Получение учетных данных GREEN-API
 
-```bash
-https://whyuchoseme.github.io/green-api--telegram/
-```
+- Пройдите регистрацию на сайте [console.green-api.com](https://console.green-api.com/).
+- Создайте свой инстанс Telegram [console.green-api.com/instanceList](https://console.green-api.com/instanceList).
+- Скопируйте **idInstance** и **apiTokenInstance** из панели управления вашего инстанса.
+
+> **Важно:** Если авторизоваться не получается, убедитесь, что вы подключаетесь по верному `apiUrl`-адресу. Поменять его можно в файле [src/shared/api/client.ts](https://github.com/whyuchoseme/green-api--telegram/blob/main/src/shared/api/client.ts).
+
+## 🌍 Демонстрация проекта
+
+**💻 [Пощупать проект вживую можно по этой ссылке](https://whyuchoseme.github.io/green-api--telegram/)**
+
+### 📱 Примечание для мобильных устройств
+
+Если Вы впервые авторизуетесь с телефона в пустой аккаунт (где еще нет истории переписок), боковая панель с кнопкой создания чата может быть скрыта из-за особенностей отображения на узких экранах. Для создания первого чата с мобильного устройства включите в браузере **«Версию для ПК»** или просто уменьшите масштаб страницы.
