@@ -5,7 +5,7 @@
   border-radius: rem(8);
   color: var(--color-text-button-primary);
   font-weight: 600;
-  transition-property: background-color;
+  transition-property: background-color, opacity;
 
   &--primary {
     background-color: var(--color-bg-button-primary);
@@ -45,6 +45,23 @@
 
     @include hover {
       background-color: var(--color-bg-button-danger-hover);
+    }
+
+    @include mobile {
+      width: rem(50);
+      height: rem(40);
+      padding: rem(10) rem(50);
+    }
+  }
+
+  &--back {
+    width: rem(40);
+    height: rem(40);
+    padding: 0;
+    background: none;
+
+    @include hover {
+      opacity: 0.5;
     }
   }
 }

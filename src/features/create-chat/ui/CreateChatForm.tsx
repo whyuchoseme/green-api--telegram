@@ -38,7 +38,7 @@ export const CreateChatForm = ({
       <Input
         id="phone-input"
         className={styles["create-chat-input"]}
-        type="text"
+        type="tel"
         placeholder="Номер телефона РФ/РК"
         value={newChatInput}
         error={error}

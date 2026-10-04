@@ -1,8 +1,9 @@
 import { useEffect, useRef } from "react";
-
-import { Spinner } from "@shared/ui";
+import { Button, Container, Spinner } from "@shared/ui";
 import { MessageBubble } from "@entities/message";
 import { SendMessageForm } from "@features/send-message";
+
+import arrowBack from "@shared/assets/icons/back-button.svg";
 
 import clsx from "clsx";
 import styles from "./ChatWindow.module.scss";
@@ -23,6 +24,7 @@ type StringMap = {
 };
 
 type ChatWindowProps = {
+  className?: string;
   activeChat: string;
   chats: Chat[];
   messages: Message[];
@@ -30,9 +32,11 @@ type ChatWindowProps = {
   cachedNames: StringMap;
   chatNamesMap: StringMap;
   onSendMessage: (text: string) => void;
+  onBack: () => void;
 };
 
 export const ChatWindow = ({
+  className,
   activeChat,
   chats,
   messages,
@@ -40,6 +44,7 @@ export const ChatWindow = ({
   cachedNames,
   chatNamesMap,
   onSendMessage,
+  onBack,
 }: ChatWindowProps) => {
   const messagesEndRef = useRef<HTMLLIElement>(null);
 
@@ -54,32 +59,57 @@ export const ChatWindow = ({
     activeChat;
 
   return (
-    <section className={styles["chat-window"]}>
-      <div className={styles["chat-window__header"]}>
-        <div className={styles["chat-window__person-avatar"]}>
-          {currentChatName ? currentChatName.charAt(0).toUpperCase() : "A"}
-        </div>
-        <div className={styles["chat-window__person-info"]}>
-          <div className={styles["chat-window__person-name"]}>
-            Чат: {currentChatName}
+    <section className={clsx(styles["chat-window"], className)}>
+      <Container viewVariant="stretch">
+        <div className={styles["chat-window__inner"]}>
+          <div className={styles["chat-window__header"]}>
+            <Button
+              className={clsx(
+                styles["chat-window__back-button"],
+                "visible-mobile",
+              )}
+              viewVariant="back"
+              onClick={onBack}
+              aria-label="Назад к списку чатов"
+            >
+              <img
+                src={arrowBack}
+                alt=""
+                width="25"
+                height="25"
+                loading="lazy"
+              />
+            </Button>
+            <div className={styles["chat-window__person-avatar"]}>
+              {currentChatName ? currentChatName.charAt(0).toUpperCase() : "?"}
+            </div>
+            <div className={styles["chat-window__person-info"]}>
+              <div className={styles["chat-window__person-name"]}>
+                {currentChatName}
+              </div>
+            </div>
           </div>
+
+          <ul className={clsx(styles["chat-window__messages"], "no-scrollbar")}>
+            {isHistoryLoading ? (
+              <Spinner />
+            ) : (
+              <>
+                {messages.map((msg: Message) => (
+                  <MessageBubble key={msg.id} message={msg} />
+                ))}
+                <li ref={messagesEndRef} aria-hidden="true" />
+              </>
+            )}
+          </ul>
+
+          <SendMessageForm
+            className={styles["chat-window__input-area"]}
+            activeChat={activeChat}
+            onSendMessage={onSendMessage}
+          />
         </div>
-      </div>
-
-      <ul className={clsx(styles["messages-list"], "no-scrollbar")}>
-        {isHistoryLoading ? (
-          <Spinner />
-        ) : (
-          <>
-            {messages.map((msg: Message) => (
-              <MessageBubble key={msg.id} message={msg} />
-            ))}
-            <li ref={messagesEndRef} aria-hidden="true" />
-          </>
-        )}
-      </ul>
-
-      <SendMessageForm activeChat={activeChat} onSendMessage={onSendMessage} />
+      </Container>
     </section>
   );
 };

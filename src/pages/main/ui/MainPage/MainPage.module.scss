@@ -1,21 +1,32 @@
 .main-page {
-  height: 100vh;
+  height: 100dvh;
   flex-grow: 1;
   display: grid;
   grid-template-columns: auto 1fr;
-  padding-block: rem(16);
-  padding-left: rem(16);
-  overflow: hidden;
 
   @include mobile {
     grid-template-columns: 1fr;
   }
-}
 
-.empty-chat {
-  @include flex-center;
+  &__sidebar {
+    margin-block: rem(16);
+    margin-left: rem(16);
 
-  &__text {
+    @include mobile {
+      margin-right: rem(16);
+      justify-self: center;
+    }
+
+    @include mobile-s {
+      margin: 0;
+    }
+  }
+
+  &__empty-chat {
+    @include flex-center;
+  }
+
+  &__hint {
     @include fluid-text(32, 16);
     color: var(--color-text-secondary);
     font-weight: 800;

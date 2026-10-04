@@ -6,7 +6,7 @@ import styles from "./Button.module.scss";
 type ButtonOwnProps<E extends ElementType = ElementType> = {
   className?: string;
   children: React.ReactNode;
-  viewVariant?: "primary" | "secondary" | "accent" | "danger";
+  viewVariant?: "primary" | "secondary" | "accent" | "danger" | "back";
   as?: E;
 };
 

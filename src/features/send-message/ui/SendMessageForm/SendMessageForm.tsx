@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Button, Input } from "@shared/ui";
 
+import clsx from "clsx";
 import styles from "./SendMessageForm.module.scss";
 
 type SendMessageFormProps = {
+  className?: string;
   activeChat: string;
   onSendMessage: (text: string) => void;
 };
 
 export const SendMessageForm = ({
+  className,
   activeChat,
   onSendMessage,
 }: SendMessageFormProps) => {
@@ -23,7 +26,10 @@ export const SendMessageForm = ({
   };
 
   return (
-    <form className={styles["message-input"]} onSubmit={handleSubmit}>
+    <form
+      className={clsx(styles["message-input"], className)}
+      onSubmit={handleSubmit}
+    >
       <Input
         id="message-input"
         className={styles["message-input__input"]}

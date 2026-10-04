@@ -3,7 +3,7 @@ import path from "path";
 import { defineConfig } from "vite";
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [react()],
   base: "/green-api--telegram/",
   resolve: {
@@ -17,6 +17,9 @@ export default defineConfig({
     },
   },
   css: {
+    modules: {
+      generateScopedName: mode === "development" ? "[local]" : undefined,
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@use "@shared/styles/" as *;`,
@@ -27,4 +30,4 @@ export default defineConfig({
   //   host: true,
   //   port: 5173,
   // },
-});
+}));

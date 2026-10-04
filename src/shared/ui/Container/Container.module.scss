@@ -2,4 +2,9 @@
   max-width: calc(#{$container-width}px + (#{$container-padding-x}px * 2));
   margin-inline: auto;
   padding-inline: #{$container-padding-x}px;
+
+  &--stretch {
+    width: 100%;
+  }
+
 }

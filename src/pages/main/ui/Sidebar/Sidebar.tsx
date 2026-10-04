@@ -16,6 +16,7 @@ type StringMap = {
 };
 
 type SidebarProps = {
+  className?: string;
   chats: Chat[];
   activeChat: string;
   isChatsLoading: boolean;
@@ -24,9 +25,11 @@ type SidebarProps = {
   onSelectChat: (chatId: string) => void;
   onCreateChat: (phoneNumber: string) => Promise<string>;
   onLogout: () => void;
+  isChatSelected: boolean;
 };
 
 export const Sidebar = ({
+  className,
   chats,
   activeChat,
   isChatsLoading,
@@ -35,6 +38,7 @@ export const Sidebar = ({
   onSelectChat,
   onCreateChat,
   onLogout,
+  isChatSelected,
 }: SidebarProps) => {
   const [searchError, setSearchError] = useState("");
 
@@ -51,7 +55,13 @@ export const Sidebar = ({
   };
 
   return (
-    <aside className={clsx(styles["sidebar"], "hidden-mobile")}>
+    <aside
+      className={clsx(
+        styles["sidebar"],
+        isChatSelected && "hidden-mobile",
+        className,
+      )}
+    >
       <div className={styles["sidebar__header"]}>
         <Button viewVariant="danger" onClick={onLogout}>
           Выйти
