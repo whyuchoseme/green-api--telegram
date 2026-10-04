@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { API_URL } from "@shared/api";
 import { getInstanceData } from "@entities/instance";
@@ -12,6 +12,7 @@ type Message = {
   id: string | number;
   text: string;
   type: "incoming" | "outgoing";
+  timestamp?: number;
 };
 
 type StringMap = {
@@ -28,6 +29,7 @@ type NotificationDto = {
   receiptId: number;
   body?: {
     typeWebhook: string;
+    timestamp?: number;
     idMessage?: string;
     senderData?: {
       chatId?: string;
@@ -59,6 +61,12 @@ export const useMessagePolling = ({
   setCachedNames,
   setChatNamesMap,
 }: UseMessagePollingParams) => {
+  const activeChatRef = useRef(activeChat);
+
+  useEffect(() => {
+    activeChatRef.current = activeChat;
+  }, [activeChat]);
+
   useEffect(() => {
     let isPolling = true;
     const controller = new AbortController();
@@ -106,7 +114,11 @@ export const useMessagePolling = ({
 
                 if (incomingText) {
                   const uniqueId = body.idMessage || String(data.receiptId);
-                  const incomingChatId = body.senderData?.chatId || activeChat;
+
+                  const currentActiveChat = activeChatRef.current;
+                  const incomingChatId =
+                    body.senderData?.chatId || currentActiveChat;
+
                   const incomingPhone = String(
                     body.senderData?.senderPhoneNumber || "",
                   );
@@ -181,8 +193,8 @@ export const useMessagePolling = ({
                   }
 
                   if (
-                    activeChat === incomingChatId ||
-                    (incomingPhone && activeChat === incomingPhone)
+                    currentActiveChat === incomingChatId ||
+                    (incomingPhone && currentActiveChat === incomingPhone)
                   ) {
                     setMessages((prev: Message[]) => {
                       if (
@@ -195,6 +207,9 @@ export const useMessagePolling = ({
                           id: uniqueId,
                           text: incomingText,
                           type: "incoming" as const,
+                          timestamp: body.timestamp
+                            ? body.timestamp * 1000
+                            : Date.now(),
                         },
                       ];
                     });
@@ -227,5 +242,5 @@ export const useMessagePolling = ({
       isPolling = false;
       controller.abort();
     };
-  }, [activeChat, setMessages, setChats, setCachedNames, setChatNamesMap]);
+  }, [setMessages, setChats, setCachedNames, setChatNamesMap]);
 };

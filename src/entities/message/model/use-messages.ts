@@ -6,11 +6,13 @@ type Message = {
   id: string | number;
   text: string;
   type: "incoming" | "outgoing";
+  timestamp?: number;
 };
 
 type HistoryMessageDto = {
   idMessage: string;
   type: string;
+  timestamp?: number;
   textMessage?: string;
   extendedTextMessage?: { text: string };
 };
@@ -49,6 +51,7 @@ export const useMessages = (activeChat: string) => {
               text:
                 m.textMessage || m.extendedTextMessage?.text || "[Сообщение]",
               type: m.type === "outgoing" ? "outgoing" : "incoming",
+              timestamp: m.timestamp ? m.timestamp * 1000 : Date.now(),
             } as Message;
           });
           setMessages(formattedMessages);

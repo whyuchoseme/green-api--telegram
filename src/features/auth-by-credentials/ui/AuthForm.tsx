@@ -19,6 +19,7 @@ export const AuthForm = ({ onSuccess }: AuthFormProps) => {
         id="authorization-id"
         className={styles["authorization-form__id"]}
         type="text"
+        inputMode="numeric"
         placeholder="idInstance"
         value={credentials.id}
         onChange={(e) =>

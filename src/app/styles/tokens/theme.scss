@@ -16,6 +16,7 @@
   --palette-gray-200: #e0e0e0;
   --palette-gray-300: #dbdbdb;
   --palette-gray-500: #999999;
+  --palette-gray-600: #7e8386;
 
   /* Синий */
   --palette-blue-200: #a6cbf0;
@@ -31,6 +32,7 @@
 
   /* Зеленый */
   --palette-green-100: #e3ffc8;
+  --palette-green-300: #70b568;
   --palette-green-500: #008000;
 
   /* Ниагара */
@@ -98,4 +100,6 @@
   /* MESSAGE */
   --color-bg-message--outgoing: var(--palette-green-100);
   --color-bg-message--incoming: var(--palette-white);
+  --color-text-message--incoming: var(--palette-gray-600);
+  --color-text-message--outgoing: var(--palette-green-300);
 }
